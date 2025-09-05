@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page acceuil!{% endblock %}
+
+{% block monTitre %}
+    Voici la liste des animaux
+{% endblock %}
+
+{% block body %}
+
+<table class="table table-striped" >
+
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Poids</th>
+                <th>Famille</th>
+                <th>Danger</th>
+                
+            </tr>
+        </thead>
+        
+        {% for animal in animaux %}
+        <tr >
+            
+            <td>
+                <img src="{{asset('images/' ~ animal.nom ~ '.png')}}" >
+            </td>
+            <td><a href="{{path('afficher_animal', {'id':animal.id}) }} ">{{animal.nom}}<a/> </td>
+            <td>{{animal.description}}</td>
+            <td>{{animal.poids}} </td>
+            <td>{{animal.famille.libelle}} </td>
+            <td>
+             {% if animal.dangereux %}
+             <span class="btn btn-danger ">Oui</span>
+             {% else %}
+             <span class="btn btn-success ">Non</span>
+             {% endif %}
+            </td>     
+            {% endfor %}   
+
+    </table>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Famille!{% endblock %}
+{% block monTitre %} Page listant les familles{% endblock %}
+
+{% block body %}
+<table class="table table-striped" >
+
+        <thead>
+            <tr>
+                <th>Libelle</th>
+                <th>Description</th>   
+            </tr>
+        </thead>
+        
+        {% for famille in familles %}
+        <tr >
+            
+            <td>{{famille.libelle}}</td>
+            <td>{{famille.description}} </td>
+
+         {% endfor %}   
+
+    </table>
+
+
+{% endblock %}
